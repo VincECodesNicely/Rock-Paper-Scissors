@@ -16,6 +16,8 @@ function getComputerChoice() {
   return stringComputerChoice;
 }
 
+//gameRules object was declared so that I avoid using massive amounts of if statements
+//got this idea from https://www.reddit.com/r/learnjavascript/comments/1cla2el/rock_paper_scissors_a_more_efficient_way/
 var gameRules = {
   "rock": {
     "rock": "draw",
