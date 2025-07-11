@@ -39,55 +39,56 @@ var gameRules = {
 // getHumanChoice();
 // getComputerChoice();
 
-function playGame() {
-  for (let i = 1; i <= 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(humanSelection, computerSelection));
-  }
-  function playRound(humanChoice, computerChoice) {
-    var result = gameRules[humanChoice][computerChoice];
-    if (result == "win") {
-      console.log("You Win! " + humanChoice + " beats " + computerChoice);
-      humanScore += 1;
-      console.log("You: " + humanScore + " Computer: " + computerScore);
-    } else if (result == "lose") {
-      console.log("You Lose! " + computerChoice + " beats " + humanChoice);
-      computerScore += 1;
-      console.log("You: " + humanScore + " Computer: " + computerScore);
-    } else if (result == "draw") {
-      console.log(
-        "It is a draw you chose: " +
-          humanChoice +
-          " the computer chose" +
-          computerChoice
-      );
-    } else {
-      console.log("Something went wrong");
-    }
-  }
+// function playGame() {
+//   for (let i = 1; i <= 5; i++) {
+//     const humanSelection = getHumanChoice();
+//     const computerSelection = getComputerChoice();
+//     console.log(playRound(humanSelection, computerSelection));
+//   }
 
-  if (humanScore > computerScore) {
-    console.log(
-      "You win! your score: " + humanScore + " computer score: " + computerScore
-    );
-  } else if (humanScore < computerScore) {
-    console.log(
-      "You lose! your score: " +
-        humanScore +
-        " computer score: " +
-        computerScore
-    );
-  } else if (humanScore == computerScore) {
-    console.log(
-      "You tied! your score: " +
-        humanScore +
-        "  computer score: " +
-        computerScore
-    );
-  } else {
-    console.log("Something went wrong");
-  }
-}
+//   function playRound(humanChoice, computerChoice) {
+//     var result = gameRules[humanChoice][computerChoice];
+//     if (result == "win") {
+//       console.log("You Win! " + humanChoice + " beats " + computerChoice);
+//       humanScore += 1;
+//       console.log("You: " + humanScore + " Computer: " + computerScore);
+//     } else if (result == "lose") {
+//       console.log("You Lose! " + computerChoice + " beats " + humanChoice);
+//       computerScore += 1;
+//       console.log("You: " + humanScore + " Computer: " + computerScore);
+//     } else if (result == "draw") {
+//       console.log(
+//         "It is a draw you chose: " +
+//           humanChoice +
+//           " the computer chose" +
+//           computerChoice
+//       );
+//     } else {
+//       console.log("Something went wrong");
+//     }
+//   }
 
-playGame();
+//   if (humanScore > computerScore) {
+//     console.log(
+//       "You win! your score: " + humanScore + " computer score: " + computerScore
+//     );
+//   } else if (humanScore < computerScore) {
+//     console.log(
+//       "You lose! your score: " +
+//         humanScore +
+//         " computer score: " +
+//         computerScore
+//     );
+//   } else if (humanScore == computerScore) {
+//     console.log(
+//       "You tied! your score: " +
+//         humanScore +
+//         "  computer score: " +
+//         computerScore
+//     );
+//   } else {
+//     console.log("Something went wrong");
+//   }
+// }
+
+// playGame();
