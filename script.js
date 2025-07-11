@@ -1,11 +1,26 @@
 // console.log("Hello Welcome");
 let humanScore = 0;
 let computerScore = 0;
+const button = document.querySelector("button");
+let humanChoice = "";
+
+// function getHumanChoice() {
+//   // let humanChoice = prompt("Enter Rock, Paper, Scissors").toLowerCase();
+//   let humanChoice = "";
+//   if(humanChoice )
+
+//   return humanChoice;
+// }
 
 function getHumanChoice() {
-  let humanChoice = prompt("Enter Rock, Paper, Scissors").toLowerCase();
+  const buttons = document.querySelectorAll("button");
 
-  return humanChoice;
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      humanChoice = event.target.innerHTML;
+      console.log("You Chose:" + humanChoice);
+    });
+  });
 }
 
 function getComputerChoice() {
@@ -46,27 +61,27 @@ var gameRules = {
 //     console.log(playRound(humanSelection, computerSelection));
 //   }
 
-//   function playRound(humanChoice, computerChoice) {
-//     var result = gameRules[humanChoice][computerChoice];
-//     if (result == "win") {
-//       console.log("You Win! " + humanChoice + " beats " + computerChoice);
-//       humanScore += 1;
-//       console.log("You: " + humanScore + " Computer: " + computerScore);
-//     } else if (result == "lose") {
-//       console.log("You Lose! " + computerChoice + " beats " + humanChoice);
-//       computerScore += 1;
-//       console.log("You: " + humanScore + " Computer: " + computerScore);
-//     } else if (result == "draw") {
-//       console.log(
-//         "It is a draw you chose: " +
-//           humanChoice +
-//           " the computer chose" +
-//           computerChoice
-//       );
-//     } else {
-//       console.log("Something went wrong");
-//     }
+// function playRound(humanChoice, computerChoice) {
+//   var result = gameRules[humanChoice][computerChoice];
+//   if (result == "win") {
+//     console.log("You Win! " + humanChoice + " beats " + computerChoice);
+//     humanScore += 1;
+//     console.log("You: " + humanScore + " Computer: " + computerScore);
+//   } else if (result == "lose") {
+//     console.log("You Lose! " + computerChoice + " beats " + humanChoice);
+//     computerScore += 1;
+//     console.log("You: " + humanScore + " Computer: " + computerScore);
+//   } else if (result == "draw") {
+//     console.log(
+//       "It is a draw you chose: " +
+//         humanChoice +
+//         " the computer chose" +
+//         computerChoice
+//     );
+//   } else {
+//     console.log("Something went wrong");
 //   }
+// }
 
 //   if (humanScore > computerScore) {
 //     console.log(
@@ -92,3 +107,30 @@ var gameRules = {
 // }
 
 // playGame();
+
+// getHumanChoice();
+
+// const computerChoice = getComputerChoice();
+// function playRound(humanChoice, computerChoice) {
+//   var result = gameRules[humanChoice][computerChoice];
+//   if (result == "win") {
+//     console.log("You Win! " + humanChoice + " beats " + computerChoice);
+//     humanScore += 1;
+//     console.log("You: " + humanScore + " Computer: " + computerScore);
+//   } else if (result == "lose") {
+//     console.log("You Lose! " + computerChoice + " beats " + humanChoice);
+//     computerScore += 1;
+//     console.log("You: " + humanScore + " Computer: " + computerScore);
+//   } else if (result == "draw") {
+//     console.log(
+//       "It is a draw you chose: " +
+//         humanChoice +
+//         " the computer chose" +
+//         computerChoice
+//     );
+//   } else {
+//     console.log("Something went wrong");
+//   }
+// }
+
+// button.addEventListener("click", playRound());
