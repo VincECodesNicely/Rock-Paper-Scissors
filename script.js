@@ -40,6 +40,11 @@ var gameRules = {
 // getComputerChoice();
 
 function playGame() {
+  for (let i = 1; i <= 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    console.log(playRound(humanSelection, computerSelection));
+  }
   function playRound(humanChoice, computerChoice) {
     var result = gameRules[humanChoice][computerChoice];
     if (result == "win") {
@@ -60,12 +65,6 @@ function playGame() {
     } else {
       console.log("Something went wrong");
     }
-  }
-
-  for (let i = 1; i <= 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(humanSelection, computerSelection));
   }
 
   if (humanScore > computerScore) {
