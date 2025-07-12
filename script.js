@@ -1,35 +1,11 @@
 // console.log("Hello Welcome");
+const humanScoreDisplay = document.querySelector("#player");
+const computerScoreDisplay = document.querySelector("#computer");
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorButton = document.querySelector("#scissors");
 let humanScore = 0;
 let computerScore = 0;
-const button = document.querySelector("button");
-let humanChoice = "";
-
-// function getHumanChoice() {
-//   // let humanChoice = prompt("Enter Rock, Paper, Scissors").toLowerCase();
-//   let humanChoice = "";
-//   if(humanChoice )
-
-//   return humanChoice;
-// }
-
-function getHumanChoice() {
-  const buttons = document.querySelectorAll("button");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      humanChoice = event.target.innerHTML;
-      console.log("You Chose:" + humanChoice);
-    });
-  });
-}
-
-function getComputerChoice() {
-  const options = ["rock", "paper", "scissors"];
-  const randomComputerChoice = Math.floor(Math.random() * options.length);
-  let stringComputerChoice = options[randomComputerChoice];
-
-  return stringComputerChoice;
-}
 
 //gameRules object was declared so that I avoid using massive amounts of if statements
 //got this idea from https://www.reddit.com/r/learnjavascript/comments/1cla2el/rock_paper_scissors_a_more_efficient_way/
@@ -108,29 +84,34 @@ var gameRules = {
 
 // playGame();
 
-// getHumanChoice();
-
 // const computerChoice = getComputerChoice();
-// function playRound(humanChoice, computerChoice) {
-//   var result = gameRules[humanChoice][computerChoice];
-//   if (result == "win") {
-//     console.log("You Win! " + humanChoice + " beats " + computerChoice);
-//     humanScore += 1;
-//     console.log("You: " + humanScore + " Computer: " + computerScore);
-//   } else if (result == "lose") {
-//     console.log("You Lose! " + computerChoice + " beats " + humanChoice);
-//     computerScore += 1;
-//     console.log("You: " + humanScore + " Computer: " + computerScore);
-//   } else if (result == "draw") {
-//     console.log(
-//       "It is a draw you chose: " +
-//         humanChoice +
-//         " the computer chose" +
-//         computerChoice
-//     );
-//   } else {
-//     console.log("Something went wrong");
-//   }
-// }
+function playRound(humanSelection) {
+  const options = ["rock", "paper", "scissors"];
+  const randomComputerChoice = Math.floor(Math.random() * options.length);
+  let computerSelection = options[randomComputerChoice];
+  var result = gameRules[humanSelection][computerSelection];
+  if (result == "win") {
+    console.log("You Win! " + humanSelection + " beats " + computerSelection);
+    humanScore++;
+    humanScoreDisplay.textContent = `Player score: ${humanScore}`;
+    console.log("You: " + humanScore + " Computer: " + computerScore);
+  } else if (result == "lose") {
+    console.log("You Lose! " + computerSelection + " beats " + humanSelection);
+    computerScore++;
+    computerScoreDisplay.textContent = `Computer score: ${computerScore}`;
+    console.log("You: " + humanScore + " Computer: " + computerScore);
+  } else if (result == "draw") {
+    console.log(
+      "It is a draw you chose: " +
+        humanSelection +
+        " the computer chose: " +
+        computerSelection
+    );
+  } else {
+    console.log("Something went wrong");
+  }
+}
 
-// button.addEventListener("click", playRound());
+rockButton.addEventListener("click", () => playRound("rock"));
+paperButton.addEventListener("click", () => playRound("paper"));
+scissorButton.addEventListener("click", () => playRound("scissors"));
