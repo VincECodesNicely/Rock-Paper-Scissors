@@ -27,78 +27,27 @@ var gameRules = {
   },
 };
 
-// getHumanChoice();
-// getComputerChoice();
-
-// function playGame() {
-//   for (let i = 1; i <= 5; i++) {
-//     const humanSelection = getHumanChoice();
-//     const computerSelection = getComputerChoice();
-//     console.log(playRound(humanSelection, computerSelection));
-//   }
-
-// function playRound(humanChoice, computerChoice) {
-//   var result = gameRules[humanChoice][computerChoice];
-//   if (result == "win") {
-//     console.log("You Win! " + humanChoice + " beats " + computerChoice);
-//     humanScore += 1;
-//     console.log("You: " + humanScore + " Computer: " + computerScore);
-//   } else if (result == "lose") {
-//     console.log("You Lose! " + computerChoice + " beats " + humanChoice);
-//     computerScore += 1;
-//     console.log("You: " + humanScore + " Computer: " + computerScore);
-//   } else if (result == "draw") {
-//     console.log(
-//       "It is a draw you chose: " +
-//         humanChoice +
-//         " the computer chose" +
-//         computerChoice
-//     );
-//   } else {
-//     console.log("Something went wrong");
-//   }
-// }
-
-//   if (humanScore > computerScore) {
-//     console.log(
-//       "You win! your score: " + humanScore + " computer score: " + computerScore
-//     );
-//   } else if (humanScore < computerScore) {
-//     console.log(
-//       "You lose! your score: " +
-//         humanScore +
-//         " computer score: " +
-//         computerScore
-//     );
-//   } else if (humanScore == computerScore) {
-//     console.log(
-//       "You tied! your score: " +
-//         humanScore +
-//         "  computer score: " +
-//         computerScore
-//     );
-//   } else {
-//     console.log("Something went wrong");
-//   }
-// }
-
-// playGame();
-
-// const computerChoice = getComputerChoice();
 function playRound(humanSelection) {
   const options = ["rock", "paper", "scissors"];
+
   const randomComputerChoice = Math.floor(Math.random() * options.length);
   let computerSelection = options[randomComputerChoice];
   var result = gameRules[humanSelection][computerSelection];
   if (result == "win") {
-    console.log("You Win! " + humanSelection + " beats " + computerSelection);
     humanScore++;
     humanScoreDisplay.textContent = `Player score: ${humanScore}`;
-    console.log("You: " + humanScore + " Computer: " + computerScore);
+    const display = document.querySelector("section");
+    const displayChoice = document.querySelector("#displayChoices");
+    displayChoice.textContent = `You Win ${humanSelection} beats ${computerSelection}`;
+    display.appendChild(displayChoice);
   } else if (result == "lose") {
     console.log("You Lose! " + computerSelection + " beats " + humanSelection);
     computerScore++;
     computerScoreDisplay.textContent = `Computer score: ${computerScore}`;
+    const display = document.querySelector("section");
+    const displayChoice = document.querySelector("#displayChoices");
+    displayChoice.textContent = `You lose ${computerSelection} beats ${humanSelection}`;
+    display.appendChild(displayChoice);
     console.log("You: " + humanScore + " Computer: " + computerScore);
   } else if (result == "draw") {
     console.log(
@@ -109,6 +58,27 @@ function playRound(humanSelection) {
     );
   } else {
     console.log("Something went wrong");
+  }
+  if (humanScore == 5) {
+    const displayHumanWinner = document.querySelector("section");
+    const displayWinnerText = document.createElement("h1");
+    displayWinnerText.classList.add("displayWinnerText");
+
+    displayWinnerText.textContent = "You Win, Winner Winner Chicken Dinner";
+    displayHumanWinner.appendChild(displayWinnerText);
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorButton.disabled = true;
+  } else if (computerScore == 5) {
+    const dsiplayComputerWin = document.querySelector("section");
+    const displayLoserText = document.createElement("h1");
+    displayLoserText.classList.add("displayLoserText");
+
+    displayLoserText.textContent = "You Lose";
+    dsiplayComputerWin.appendChild(displayLoserText);
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorButton.disabled = true;
   }
 }
 

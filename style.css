@@ -20,6 +20,32 @@ section {
   margin: auto;
 }
 
+section p {
+  display: flex;
+  position: fixed;
+  top: 200px;
+
+  font-weight: bold;
+}
+
+.displayWinnerText {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: green;
+}
+
+.displayLoserText {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: red;
+}
+
 .container {
   display: flex;
   justify-content: center;
